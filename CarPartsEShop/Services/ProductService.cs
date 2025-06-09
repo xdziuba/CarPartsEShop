@@ -20,12 +20,17 @@ namespace CarPartsEShop.Services
 
         public async Task<List<Product>> GetAllAsync()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.Products
+                .Include(p => p.Category)
+                .Where(p => !p.Deleted)
+                .ToListAsync();
         }
 
         public async Task<Product> GetAsync(int id)
         {
-            return await _context.Products.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await _context.Products
+                .Include(p => p.Category)
+                .Where(x => x.Id == id && !x.Deleted).FirstOrDefaultAsync();
         }
 
         public async Task<Product> Update(Product product)
@@ -33,6 +38,11 @@ namespace CarPartsEShop.Services
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
             return product;
+        }
+
+        public async Task<Category?> GetCategoryByIdAsync(int id)
+        {
+            return await _context.Categories.FindAsync(id);
         }
     }
 }

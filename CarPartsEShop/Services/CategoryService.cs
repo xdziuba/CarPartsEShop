@@ -20,12 +20,16 @@ namespace CarPartsEShop.Services
 
         public async Task<List<Category>> GetAllAsync()
         {
-            return await _context.Categories.ToListAsync();
+            return await _context.Categories
+                .Where(p => !p.Deleted)
+                .ToListAsync();
         }
 
         public async Task<Category> GetAsync(int id)
         {
-            return await _context.Categories.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await _context.Categories
+                .Where(p => !p.Deleted)
+                .Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
         public async Task<Category> Update(Category category)

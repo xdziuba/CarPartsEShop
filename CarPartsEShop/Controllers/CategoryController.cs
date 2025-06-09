@@ -56,5 +56,16 @@ namespace CarPartsEShop.Controllers
 
             return Ok(result);
         }
+
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var product = await _categoryService.GetAsync(id);
+            product.Deleted = true;
+            var result = await _categoryService.Update(product);
+
+            return Ok(result);
+        }
     }
 }

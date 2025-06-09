@@ -41,8 +41,30 @@ namespace CarPartsEShop.Controllers
 
         // POST api/<ProductController>
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] Product product)
+        public async Task<ActionResult> Post([FromBody] ProductDto productDto)
         {
+            var category = await _productService.GetCategoryByIdAsync(productDto.CategoryId);
+            if (category == null)
+            {
+                return BadRequest("Category not found");
+            }
+            else if (category.Deleted)
+            {
+                return BadRequest("Category is deleted");
+            }
+
+            var product = new Product
+            {
+                Name = productDto.Name,
+                Description = productDto.Description,
+                Ean = productDto.Ean,
+                Price = productDto.Price,
+                Stock = productDto.Stock,
+                CategoryId = category.Id,
+                Category = category,
+                Deleted = productDto.Deleted
+            };
+
             var result = await _productService.Add(product);
 
             return Ok(result);

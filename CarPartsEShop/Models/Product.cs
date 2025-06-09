@@ -8,6 +8,7 @@ public class Product
     public string Ean { get; set; } = string.Empty;
     public decimal Price { get; set; }
     public int Stock { get; set; } = 0;
+    public int CategoryId { get; set; } //FK
     public Category Category { get; set; } = default!;
     public bool Deleted { get; set; } = false;
 }

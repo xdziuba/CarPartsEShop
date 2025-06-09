@@ -8,5 +8,6 @@ namespace CarPartsEShop.Services
         Task<Product> GetAsync(int id);
         Task<Product> Update(Product product);
         Task<Product> Add(Product product);
+        Task<Category?> GetCategoryByIdAsync(int id);
     }
 }
