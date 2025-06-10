@@ -13,6 +13,10 @@ namespace CarPartsEShop.Services
         }
         public async Task<CartItem> AddItemAsync(int cartId, int productId, int quantity)
         {
+            var product = await _context.Products.FindAsync(productId);
+            if (product == null)
+                throw new ArgumentException("Product does not exist.");
+
             var item = new CartItem { CartId = cartId, ProductId = productId, Quantity = quantity };
             _context.CartItems.Add(item);
             await _context.SaveChangesAsync();

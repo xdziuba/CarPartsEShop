@@ -36,8 +36,15 @@ namespace CarPartsEShop.Controllers
         [HttpPost("add-item")]
         public async Task<ActionResult<CartItem>> AddItem(int cartId, int productId, int quantity)
         {
-            var item = await _cartService.AddItemAsync(cartId, productId, quantity);
-            return Ok(item);
+            try
+            {
+                var item = await _cartService.AddItemAsync(cartId, productId, quantity);
+                return Ok(item);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpPut("update-item/{itemId}")]
