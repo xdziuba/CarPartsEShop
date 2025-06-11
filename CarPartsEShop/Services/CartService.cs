@@ -25,6 +25,10 @@ namespace CarPartsEShop.Services
 
         public async Task<Cart> CreateCartAsync(int customerId)
         {
+            var customerExists = await _context.Customers.AnyAsync(c => c.Id == customerId);
+            if (!customerExists)
+                throw new ArgumentException("Customer does not exist.");
+            
             var cart = new Cart { CustomerId = customerId };
             _context.Carts.Add(cart);
             await _context.SaveChangesAsync();

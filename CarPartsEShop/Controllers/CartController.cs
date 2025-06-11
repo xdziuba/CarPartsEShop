@@ -29,8 +29,15 @@ namespace CarPartsEShop.Controllers
         [HttpPost("create/{customerId}")]
         public async Task<ActionResult<Cart>> CreateCart(int customerId)
         {
-            var cart = await _cartService.CreateCartAsync(customerId);
-            return Ok(cart);
+            try
+            {
+                var cart = await _cartService.CreateCartAsync(customerId);
+                return Ok(cart);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpPost("add-item")]
