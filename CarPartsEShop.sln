@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarPartsEShop", "CarPartsEShop\CarPartsEShop.csproj", "{00E0B387-8907-4B0A-99C8-BDB576B2A783}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPartsEShop", "CarPartsEShop\CarPartsEShop.csproj", "{00E0B387-8907-4B0A-99C8-BDB576B2A783}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarPartsEShop.Tests", "CarPartsEShop.Tests\CarPartsEShop.Tests.csproj", "{B39D1765-0EB6-4B8E-BDC0-E4FBDF11ECCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarPartsEShop.IntegrationTests", "CarPartsEShop.IntegrationTests\CarPartsEShop.IntegrationTests.csproj", "{4DCC1833-931A-46A6-92F9-FDA9CF4D9215}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{00E0B387-8907-4B0A-99C8-BDB576B2A783}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00E0B387-8907-4B0A-99C8-BDB576B2A783}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00E0B387-8907-4B0A-99C8-BDB576B2A783}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B39D1765-0EB6-4B8E-BDC0-E4FBDF11ECCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B39D1765-0EB6-4B8E-BDC0-E4FBDF11ECCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B39D1765-0EB6-4B8E-BDC0-E4FBDF11ECCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B39D1765-0EB6-4B8E-BDC0-E4FBDF11ECCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DCC1833-931A-46A6-92F9-FDA9CF4D9215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DCC1833-931A-46A6-92F9-FDA9CF4D9215}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DCC1833-931A-46A6-92F9-FDA9CF4D9215}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DCC1833-931A-46A6-92F9-FDA9CF4D9215}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
