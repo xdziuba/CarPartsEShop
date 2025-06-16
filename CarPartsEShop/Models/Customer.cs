@@ -11,6 +11,7 @@ public class Customer
     public string PostalCode { get; set; } = string.Empty;
     public string Country { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
+    public string Role { get; set; } = "User";
 
     public Cart? Cart { get; set; }
 }

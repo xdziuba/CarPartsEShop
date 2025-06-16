@@ -68,7 +68,8 @@ namespace CarPartsEShop.Controllers
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, customer.Id.ToString()),
-                new Claim(ClaimTypes.Email, customer.Email)
+                new Claim(ClaimTypes.Email, customer.Email),
+                new Claim(ClaimTypes.Role, customer.Role)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Test key, thanks to which we will pass the project with at least a 4 :)"));
@@ -112,7 +113,7 @@ namespace CarPartsEShop.Controllers
         }
 
         [HttpPut("update")]
-        [Authorize]
+        [Authorize(Roles = "User")]
         public async Task<ActionResult> UpdateCustomer(UpdateCustomerDto dto)
         {
             if (dto == null)
