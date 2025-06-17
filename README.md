@@ -27,7 +27,7 @@
 - [x] Resetowanie hasła
 - [x] Edycja konta
 - [x] Wdrożenie Roli użytkownika
-- [ ] Procesowanie koszyka
+- [x] Procesowanie koszyka
 - [ ] Faktury/Paragony na maila
 
 ---
