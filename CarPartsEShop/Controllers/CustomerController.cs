@@ -1,6 +1,7 @@
 ﻿using CarPartsEShop.Dtos;
 using CarPartsEShop.Models;
 using CarPartsEShop.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,6 +19,7 @@ namespace CarPartsEShop.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Customer>> GetCustomer(int id)
         {
             var result = await _customerService.GetCustomerAsync(id);
@@ -30,6 +32,7 @@ namespace CarPartsEShop.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Customer>> CreateCustomer(CreateCustomerDto dto)
         {
             var customer = new Customer
@@ -40,7 +43,9 @@ namespace CarPartsEShop.Controllers
                 Street = dto.Street,
                 City = dto.City,
                 PostalCode = dto.PostalCode,
-                Country = dto.Country
+                Country = dto.Country,
+                Password = dto.Password,
+                Role = dto.Role
             };
 
             var result = await _customerService.CreateCustomerAsync(customer);

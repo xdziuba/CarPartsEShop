@@ -3,6 +3,7 @@ using CarPartsEShop.Repositories;
 using System;
 using CarPartsEShop.Services;
 using CarPartsEShop.Models;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -41,6 +42,7 @@ namespace CarPartsEShop.Controllers
 
         // POST api/<CategoryController>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Post([FromBody] Category category)
         {
             var result = await _categoryService.Add(category);
@@ -48,8 +50,9 @@ namespace CarPartsEShop.Controllers
             return Ok(result);
         }
 
-        // PUT api/<CategoryController>/5 COS TU NIE BANGLA XD
+        // PUT api/<CategoryController>/
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Put(int id, [FromBody] Category category)
         {
             var result = await _categoryService.Update(category);
@@ -59,6 +62,7 @@ namespace CarPartsEShop.Controllers
 
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(int id)
         {
             var product = await _categoryService.GetAsync(id);
