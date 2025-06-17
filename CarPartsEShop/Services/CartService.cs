@@ -23,6 +23,49 @@ namespace CarPartsEShop.Services
             return item;
         }
 
+        public async Task<CheckoutResponse> CheckoutAsync(int customerId)
+        {
+            var cart = await _context.Carts
+                .Include(c => c.Items)
+                .ThenInclude(i => i.Product)
+                .FirstOrDefaultAsync(c => c.CustomerId == customerId);
+
+            if (cart == null || !cart.Items.Any())
+            {
+                return new CheckoutResponse
+                {
+                    Success = false,
+                    Msg = "Cart is empty or does not exist."
+                };
+            }
+
+            foreach (var item in cart.Items)
+            {
+                if (item.Product.Stock < item.Quantity)
+                {
+                    return new CheckoutResponse
+                    {
+                        Success = false,
+                        Msg = $"Insufficient stock for product {item.Product.Name}."
+                    };
+                }
+            }
+
+            foreach (var item in cart.Items)
+            {
+                item.Product.Stock -= item.Quantity;
+            }
+
+            cart.Items.Clear();
+            await _context.SaveChangesAsync();
+
+            return new CheckoutResponse
+            {
+                Success = true,
+                Msg = "Checkout successful."
+            };
+        }
+
         public async Task<Cart> CreateCartAsync(int customerId)
         {
             var customerExists = await _context.Customers.AnyAsync(c => c.Id == customerId);

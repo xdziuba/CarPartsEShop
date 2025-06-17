@@ -40,6 +40,28 @@ namespace CarPartsEShop.Controllers
 
         // --- Customer endpoints ---
 
+        [HttpPost("checkout")]
+        [Authorize]
+        public async Task<ActionResult<CheckoutResponse>> Checkout()
+        {
+            int customerId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
+            var response = await _cartService.CheckoutAsync(customerId);
+            if (!response.Success)
+                return BadRequest(new { message = response.Msg });
+            return Ok(response);
+        }
+
+        [HttpGet("my-cart")]
+        [Authorize]
+        public async Task<ActionResult<Cart>> GetMyCart()
+        {
+            int customerId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
+            var cart = await _cartService.GetCartAsync(customerId);
+            if (cart == null)
+                return NotFound();
+            return Ok(cart);
+        }
+
         [HttpPost("create")]
         [Authorize]
         public async Task<ActionResult<Cart>> CreateCart()

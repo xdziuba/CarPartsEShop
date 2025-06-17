@@ -11,5 +11,6 @@ namespace CarPartsEShop.Services
         Task<bool> RemoveItemAsync(int itemId);
         Task<CartItem?> GetCartItemByIdAsync(int itemId);
         Task<List<Cart>> GetAllCartsAsync();
+        Task<CheckoutResponse> CheckoutAsync(int customerId);
     }
 }
