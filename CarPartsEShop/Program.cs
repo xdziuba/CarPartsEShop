@@ -4,6 +4,7 @@ namespace CarPartsEShop;
 using Microsoft.EntityFrameworkCore;
 using CarPartsEShop.Repositories;
 using CarPartsEShop.Services;
+using CarPartsEShop.Seeders.DbSeeder;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
@@ -81,6 +82,14 @@ public class Program
         {
             app.UseSwagger();
             app.UseSwaggerUI();
+
+            // Seed the database with initial data
+            using (var scope = app.Services.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                var dbSeeder = new DbSeeder();
+                dbSeeder.Seed(dbContext).GetAwaiter().GetResult();
+            }
         }
 
         app.UseHttpsRedirection();
@@ -89,6 +98,7 @@ public class Program
         app.UseAuthorization();
 
         app.MapControllers();
+
 
         app.Run();
     }

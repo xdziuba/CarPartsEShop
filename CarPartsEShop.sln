@@ -5,9 +5,9 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPartsEShop", "CarPartsEShop\CarPartsEShop.csproj", "{00E0B387-8907-4B0A-99C8-BDB576B2A783}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarPartsEShop.Tests", "CarPartsEShop.Tests\CarPartsEShop.Tests.csproj", "{B39D1765-0EB6-4B8E-BDC0-E4FBDF11ECCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPartsEShop.Tests", "CarPartsEShop.Tests\CarPartsEShop.Tests.csproj", "{B39D1765-0EB6-4B8E-BDC0-E4FBDF11ECCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarPartsEShop.IntegrationTests", "CarPartsEShop.IntegrationTests\CarPartsEShop.IntegrationTests.csproj", "{4DCC1833-931A-46A6-92F9-FDA9CF4D9215}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPartsEShop.IntegrationTests", "CarPartsEShop.IntegrationTests\CarPartsEShop.IntegrationTests.csproj", "{4DCC1833-931A-46A6-92F9-FDA9CF4D9215}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
