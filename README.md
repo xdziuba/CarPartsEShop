@@ -1,6 +1,6 @@
 # Projekt Zaliczeniowy na PP4 - CarPartsEShop
-## Wymagania i Postęp
 
+---
 
 ## ✅ Ocena 3.0 – **Minimum funkcjonalne (jedna usługa)**
 
