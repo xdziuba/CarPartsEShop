@@ -9,5 +9,7 @@ namespace CarPartsEShop.Services
         Task<CartItem> AddItemAsync(int cartId, int productId, int quantity);
         Task<CartItem?> UpdateItemAsync(int itemId, int quantity);
         Task<bool> RemoveItemAsync(int itemId);
+        Task<CartItem?> GetCartItemByIdAsync(int itemId);
+        Task<List<Cart>> GetAllCartsAsync();
     }
 }

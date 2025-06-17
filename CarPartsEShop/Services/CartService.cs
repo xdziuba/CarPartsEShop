@@ -35,12 +35,27 @@ namespace CarPartsEShop.Services
             return cart;
         }
 
+        public async Task<List<Cart>> GetAllCartsAsync()
+        {
+            return await _context.Carts
+                .Include(c => c.Items)
+                .ThenInclude(i => i.Product)
+                .ToListAsync();
+        }
+
         public async Task<Cart?> GetCartAsync(int customerId)
         {
             return await _context.Carts
                 .Include(c => c.Items)
                 .ThenInclude(i => i.Product)
                 .FirstOrDefaultAsync(c => c.CustomerId == customerId);
+        }
+
+        public async Task<CartItem?> GetCartItemByIdAsync(int itemId)
+        {
+            return await _context.CartItems
+                .Include(ci => ci.Cart)
+                .FirstOrDefaultAsync(ci => ci.Id == itemId);
         }
 
         public async Task<bool> RemoveItemAsync(int itemId)

@@ -113,7 +113,7 @@ namespace CarPartsEShop.Controllers
         }
 
         [HttpPut("update")]
-        [Authorize(Roles = "User")]
+        [Authorize]
         public async Task<ActionResult> UpdateCustomer(UpdateCustomerDto dto)
         {
             if (dto == null)
