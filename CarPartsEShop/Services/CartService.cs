@@ -56,6 +56,19 @@ namespace CarPartsEShop.Services
                 item.Product.Stock -= item.Quantity;
             }
 
+            var order = new Order
+            {
+                CustomerId = customerId,
+                Items = cart.Items.Select(i => new OrderItem
+                {
+                    ProductId = i.ProductId,
+                    Quantity = i.Quantity,
+                    Price = i.Product.Price
+                }).ToList()
+            };
+
+            await _context.Orders.AddAsync(order);
+
             cart.Items.Clear();
             await _context.SaveChangesAsync();
 
