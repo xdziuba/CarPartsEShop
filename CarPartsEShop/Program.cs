@@ -43,6 +43,8 @@ public class Program
         builder.Services.AddScoped<ICategoryService, CategoryService>();
         builder.Services.AddScoped<ICartService, CartService>();
         builder.Services.AddScoped<ICustomerService, CustomerService>();
+        builder.Services.AddScoped<IInvoiceEmailService, InvoiceEmailService>();
+
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
 
