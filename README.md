@@ -14,27 +14,27 @@
 ## 🟨 Ocena 3.5 – **+ Testy**
 
 - [X] Wszystko z poziomu 3.0
-- [ ] Testy jednostkowe
-- [ ] Testy integracyjne
+- [X] Testy jednostkowe
+- [X] Testy integracyjne
 
 ---
 
 ## 🟨 Ocena 4.0 – **+ Autoryzacja JWT i dodatkowa funkcjonalność**
 
-- [ ] Wszystko z poziomu 3.5
+- [X] Wszystko z poziomu 3.5
 - [x] Rejestracja klienta
 - [x] Logowanie
 - [x] Resetowanie hasła
 - [x] Edycja konta
 - [x] Wdrożenie Roli użytkownika
 - [x] Procesowanie koszyka
-- [ ] Faktury/Paragony na maila
+- [x] Faktury/Paragony na maila
 
 ---
 
 ## 🟥 Ocena 4.5 – **+ Mikrousługi**
 
-- [ ] Wszystko z poziomu 4.0
+- [x] Wszystko z poziomu 4.0
 - [ ] System rozdzielony na minimum trzy mikrousługi
 
 ---
